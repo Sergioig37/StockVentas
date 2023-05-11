@@ -8,12 +8,10 @@ public class Producto {
 	private double precio;
 	
 	
-	public Producto(String idProducto, String nombreProducto, int cantidad, double precio) {
+	public Producto(String idProducto, String nombreProducto) {
 		
 		this.idProducto = idProducto;
 		this.nombreProducto = nombreProducto;
-		this.cantidad = cantidad;
-		this.precio = precio;
 		
 	}
 
