@@ -8,18 +8,15 @@ public class Producto {
 	private double precio;
 	
 	
-	public Producto(String idProducto, String nombreProducto) {
+	public Producto(String idProducto, String nombreProducto, int cantidad, double precio) {
 		
 		this.idProducto = idProducto;
 		this.nombreProducto = nombreProducto;
-		
+		this.cantidad = cantidad;
+		this.precio = precio;
+
 	}
 
-
-	
-	
-	
-	
 	
 	public String getIdProducto() {
 		return idProducto;
@@ -59,6 +56,14 @@ public class Producto {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Producto " + idProducto + " , " + nombreProducto + " , " + cantidad
+				+ "  unidades , " + precio + "]";
+	}
+	
 	
 	
 	
