@@ -2,6 +2,8 @@ package datos;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 import objetos.Producto;
@@ -10,24 +12,20 @@ public class Write {
 
 	private final static String FICHERO = "C:\\Users\\Mañana\\Documents\\resultado.txt";
 	
-	public static void rellenarArchivo(Iterator<Producto> p) {
+	public static void rellenarArchivo(Iterator<Producto> products) {
 	
 		BufferedWriter ficheroSalida;
-		
-		
-		Iterator<Producto> productos = p;
-		
+		ArrayList<Producto> productosFinales = new ArrayList<Producto>();
 		
 		try {
 			ficheroSalida = new BufferedWriter(new FileWriter(FICHERO));
-			
-			while(productos.hasNext()){
 				
-				Producto producto = productos.next();
+				while(products.hasNext()) {
+					productosFinales.add(products.next());
+				}
 				
-				ficheroSalida.write(producto.toString()+"\n");
+				ficheroSalida.write(productosFinales.toString());
 				
-			}
 			ficheroSalida.close();
 		}
 		catch(Exception e) {

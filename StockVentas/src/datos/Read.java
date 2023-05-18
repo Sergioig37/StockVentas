@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import ayudasexternas.ComparadorProductos;
 import ayudasexternas.ProductoConstructor;
 import objetos.Producto;
 
@@ -13,25 +14,23 @@ public class Read {
 	
 	//considera hacer que fichero no sea un atributo estático y cambie según acabe de leer los datos y cerrar el archivo
 	//que lo haga una y otra vez mientras tenga archivos que leer
-	private final static String FICHERO = "C:\\Users\\Mañana\\Documents\\ST1.txt";
-	private final static String FICHERO2 = "C:\\Users\\Mañana\\Documents\\ST2.txt";
 	
 
-	public static Iterator<Producto> readFile() {
+	public static Iterator<Producto> readFiles(String Fichero) {
 		
-			BufferedReader ficheroEntrada, ficheroEntrada2;
+			BufferedReader ficheroEntrada;
 			ArrayList<Producto> productos = new ArrayList<Producto>();
 			
 			try {
-				ficheroEntrada = new BufferedReader(new FileReader(FICHERO));
-				ficheroEntrada2 = new BufferedReader(new FileReader(FICHERO2));
+				ficheroEntrada = new BufferedReader(new FileReader(Fichero));
+			
 				
 				String idProducto = ficheroEntrada.readLine();
-				String idProducto2 = ficheroEntrada2.readLine();
+				
 
-				while(idProducto!=null||idProducto2!= null) {
+				while(idProducto!=null) {
 					
-					if(idProducto!=null) {
+					
 						
 						String nombre = ficheroEntrada.readLine();
 						
@@ -39,35 +38,21 @@ public class Read {
 						
 						String precio = ficheroEntrada.readLine();
 						
+						 Producto productonew = ProductoConstructor.construirProducto(idProducto, nombre, cantidad, precio);
+						 
 						
-						
-						productos.add(ProductoConstructor.construirProducto(idProducto, nombre, cantidad, precio));
-						
+						 
+						 productos.add(productonew);
+												
 						idProducto = ficheroEntrada.readLine();
-					}
-					
-					if(idProducto2!=null) {
-						
-						String nombre2 = ficheroEntrada2.readLine();
-						
-						String cantidad2 = ficheroEntrada2.readLine();
-						
-						String precio2 = ficheroEntrada2.readLine();
-						
-						productos.add(ProductoConstructor.construirProducto(idProducto, nombre2, cantidad2, precio2));
-						
-						idProducto2 = ficheroEntrada2.readLine();
-					}
 
 				}
 				ficheroEntrada.close();
-				
 			}
 			catch(Exception e){
-				System.out.println("No se pudo leer ningún producto");
+				System.out.println("Error, precios diferentes");
 				e.printStackTrace();
 			}
-			;
 			return productos.iterator();
 	}
 }

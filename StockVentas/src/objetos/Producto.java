@@ -61,7 +61,7 @@ public class Producto {
 	@Override
 	public String toString() {
 		return "Producto " + idProducto + " , " + nombreProducto + " , " + cantidad
-				+ "  unidades , " + precio + "]";
+				+ "  unidades , " + precio + "]" +"\n";
 	}
 	
 	
